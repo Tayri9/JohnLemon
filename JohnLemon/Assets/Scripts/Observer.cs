@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Observer : MonoBehaviour
 {
+    public GameEnding gameEnding;
     public Transform player;
+
     bool m_IsPlayerInRange;
 
     private void Update()
@@ -17,7 +19,10 @@ public class Observer : MonoBehaviour
 
             if (Physics.Raycast(ray, out raycastHit))
             {
-
+                if (raycastHit.collider.transform == player)
+                {
+                    gameEnding.CaughtPlayer();
+                }
             }
         }
     }
